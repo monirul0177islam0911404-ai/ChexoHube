@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ChexoHub</title>
+<style>
+.video-card{width:100%;margin:12px 0;padding:10px;border-radius:12px;border:1px solid #ddd;}
+.ad-box{margin:20px 0;text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- Small banner at top -->
+<div class="ad-box">
+<script type="text/javascript">
+ atOptions = {
+  'key' : '30921df49dc35be6701cc3d7f8ca8108',
+  'format' : 'iframe',
+  'height' : 50,
+  'width' : 320,
+  'params' : {}
+ };
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/30921df49dc35be6701cc3d7f8ca8108/invoke.js"></script>
+</div>
+
+<h2 style="text-align:center;">ChexoHub Videos</h2>
+<div id="video-list"></div>
+
+<!-- Native banner bottom -->
+<div class="ad-box">
+<script async="async" data-cfasync="false" src="//pl27967475.effectivegatecpm.com/e1682f5b5155c961011e82faea551290/invoke.js"></script>
+<div id="container-e1682f5b5155c961011e82faea551290"></div>
+</div>
+
+<script>
+fetch('videos.json')
+  .then(res => res.json())
+  .then(data => {
+    const box = document.getElementById('video-list');
+    data.forEach((v,i)=>{
+      // Insert mid-scroll ad every 3 videos
+      if(i % 3 === 0 && i !== 0){
+         box.innerHTML += `
+         <div class='ad-box'>
+           <script type="text/javascript">
+            atOptions = {
+             'key' : '1535101a42bd09dee1fb390e6f781fe3',
+             'format' : 'iframe',
+             'height' : 250,
+             'width' : 300,
+             'params' : {}
+            };
+           </script>
+           <script type="text/javascript" src="//www.highperformanceformat.com/1535101a42bd09dee1fb390e6f781fe3/invoke.js"></script>
+         </div>`;
+      }
+      box.innerHTML += `
+        <div class="video-card">
+          <img src="${v.thumb}" style="width:100%;border-radius:10px;">
+          <h3>${v.title}</h3>
+          <p>${v.description}</p>
+          <a href="${v.link}" target="_blank">
+            <button style="padding:10px 20px;border-radius:8px;">Watch Now</button>
+          </a>
+        </div>`;
+    });
+  });
+</script>
+
+</body>
+</html>
